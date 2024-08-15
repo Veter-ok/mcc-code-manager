@@ -1,5 +1,5 @@
 import React from "react";
-import { IBank } from "../../types/banksType";
+import { IBank } from "../../types";
 import { useNavigate } from "react-router-dom";
 
 interface IPropsBankBlock {

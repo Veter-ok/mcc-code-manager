@@ -1,5 +1,5 @@
 import { BANKS } from "../data";
-import { IBank } from "../types/banksType";
+import { IBank } from "../types";
 
 export const findBankByID = (id: number):IBank => {
     for(let i = 0; i < BANKS.length; i++) {
