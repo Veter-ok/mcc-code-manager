@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +17,9 @@ const Header = () => {
           <div className="flex-auto"></div>
           <div className="flex-auto">
             <ul className="pr-5 h-full hidden justify-end text-center text-white sm:flex">
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><a>Банки</a></li>
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><a>Управление</a></li>
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><a>Аккаунт</a></li>
+              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/'>Банки</Link></li>
+              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/manager'>Управление</Link></li>
+              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/'>Аккаунт</Link></li>
             </ul>
           </div>
           <button onClick={handleClick} className="flex flex-col justify-center items-center mr-10 sm:hidden">

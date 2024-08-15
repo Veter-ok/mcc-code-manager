@@ -1,0 +1,11 @@
+import { BANKS } from "../data";
+import { IBank } from "../types/banksType";
+
+export const findBankByID = (id: number):IBank => {
+    for(let i = 0; i < BANKS.length; i++) {
+        if (BANKS[i].id === id){
+            return BANKS[i]
+        }
+    }
+    return BANKS[0]
+}
