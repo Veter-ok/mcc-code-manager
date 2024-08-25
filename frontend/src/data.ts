@@ -1,4 +1,4 @@
-import { IBank } from "./types/banksType";
+import { IBank, ICashBack } from "./types";
 
 export const BANKS:IBank[] = [
     {
@@ -21,4 +21,19 @@ export const BANKS:IBank[] = [
         id: 5,
         name: "Райффайзен банк"
     },
+]
+
+export const CASHBACK:ICashBack[] = [
+    {
+        id: 0,
+        bankId: 0,
+        name: '5% транспорт',
+        mcc: [11, 222]
+    },
+    {
+        id: 1,
+        bankId: 0,
+        name: '5% красота',
+        mcc: [11, 222]
+    }
 ]
