@@ -9,3 +9,9 @@ export interface ICashBack {
     name: string
     mcc: number[]
 }
+
+export interface IMCCcode {
+    id: number
+    value: number
+    description: string
+}
