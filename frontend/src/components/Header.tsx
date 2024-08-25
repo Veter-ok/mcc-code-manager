@@ -17,9 +17,9 @@ const Header = () => {
           <div className="flex-auto"></div>
           <div className="flex-auto">
             <ul className="pr-5 h-full hidden justify-end text-center text-white sm:flex">
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/'>Банки</Link></li>
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/manager'>Управление</Link></li>
-              <li className="bg-red-300 mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery"><Link to='/'>Аккаунт</Link></li>
+              <Link to='/'        className="mt-[22px] pt-[5px] text-lg h-10 mx-2 rounded-md w-[125px] hover:bg-secondery">Банки</Link>
+              <Link to='/manager' className="mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery">Управление</Link>
+              <Link to='/profile' className="mt-[22px] pt-[5px] w-[125px] text-lg h-10 mx-2 rounded-md hover:bg-secondery">Аккаунт</Link>
             </ul>
           </div>
           <button onClick={handleClick} className="flex flex-col justify-center items-center mr-10 sm:hidden">
@@ -40,13 +40,13 @@ const Header = () => {
               </span>  
           </button>
       </div>
-      <div>
+      {/* <div>
         <ul className={`flex h-full ${isOpen ? 'block' : 'hidden'} justify-center text-center text-white sm:hidden`}>
               <li className="bg-red-300 mt-[22px] pt-[5px] w-[135px] text-lg h-10 mx-3 bg-primary rounded-md hover:bg-secondery"><a>Банки</a></li>
               <li className="bg-red-300 mt-[22px] pt-[5px] w-[135px] text-lg h-10 mx-3 bg-primary rounded-md hover:bg-secondery"><a>Управление</a></li>
               <li className="bg-red-300 mt-[22px] pt-[5px] w-[135px] text-lg h-10 mx-3 bg-primary rounded-md hover:bg-secondery"><a>Аккаунт</a></li>
           </ul>
-      </div>
+      </div> */}
     </>
   )
 }
