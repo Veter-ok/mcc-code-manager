@@ -42,21 +42,21 @@ export const MCC_CODES:IMCCcode[] = [
     {
         id: 0,
         value: 4131,
-        description: ''
+        description: 'Услуги пассажирского транспорта'
     },
     {
         id: 1,
         value: 4729,
-        description: ''
+        description: '______'
     },
     {
         id: 2,
         value: 4789,
-        description: ''
+        description: 'Точки, предлагающие услуги по перевозке пассажиров'
     },
     {
         id: 3,
         value: 3990,
-        description: ''
+        description: 'Точки, относящиеся к экосистеме Яндекс'
     }
 ]

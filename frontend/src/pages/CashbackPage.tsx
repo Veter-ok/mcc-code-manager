@@ -30,7 +30,7 @@ const CashbackPage = () => {
     return (
         <div>
             <p className='text-center text-3xl'>{bank.name}</p>
-            <div className='flex w-full justify-center mt-[40px]'>
+            <div className='flex mx-auto w-1/2 justify-center mt-[40px]'>
                 <Input 
                     placeholder='Название cashback-а / МСС-код'
                     value={value} 

@@ -9,3 +9,11 @@ export const findBankByID = (id: number):IBank => {
     }
     return BANKS[0]
 }
+
+export const getAllBanksName = ():string[] => {
+    const names = []
+    for(let i = 0; i < BANKS.length; i++) {
+        names.push(BANKS[i].name)
+    }
+    return names
+}

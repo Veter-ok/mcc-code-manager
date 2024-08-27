@@ -35,7 +35,7 @@ const CashbackBlock:React.FC<ICashbackBlockProps> = ({cashback, openedId,setOpen
 
     return (
         <> 
-            <div onClick={() => openList()} className="pt-3 flex justify-center w-1/4 h-[60px] border-primary border-4 rounded-md p-2">
+            <div onClick={() => openList()} className="sm:w-1/4 w-11/12 pt-3 flex justify-center h-[60px] border-primary border-4 rounded-md p-2">
                 <div className="basis-2/3 text-center">{cashback.name}</div>
                 {openedId === cashback.id ?
                 <div>close</div>
@@ -44,11 +44,11 @@ const CashbackBlock:React.FC<ICashbackBlockProps> = ({cashback, openedId,setOpen
                 }
             </div>
             {openedId === cashback.id ?
-            <div className="mt-[-20px] justify-center w-1/4 h-fit border-primary border-4 rounded-md p-2">
-                {mccCodes.map((mccCode, index) => 
-                    <div key={mccCode.id} className="flex my-[2px]">
-                        <div key={index} className="text-center basis-1/3">{mccCode.value}</div>
-                        <div>{mccCode.description}</div>
+            <div className="sm:w-1/4 w-11/12 mt-[-20px] justify-center h-fit border-primary border-4 rounded-md p-2 pt-0">
+                {mccCodes.map((mccCode) => 
+                    <div key={mccCode.id} className="flex my-[7px] border-b py-1">
+                        <div className="text-center basis-1/4 my-auto">{mccCode.value}</div>
+                        <div className="basis-3/4">{mccCode.description}</div>
                     </div>
                 )}
             </div>
