@@ -13,6 +13,10 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use('/api/v1/', router)
 
+app.get("/hello", (req, res) => {
+    res.status(200).json({"msg": "Hello World"})
+})
+
 app.listen(process.env.PORT, () => {
 	console.log(`[server]: Server is running at https://localhost:${process.env.PORT}`)
 })
