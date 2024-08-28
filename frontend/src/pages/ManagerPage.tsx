@@ -1,14 +1,15 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import { Input, MCCcodeInput } from '../components/ui/Input'
-import { Select } from '../components/ui/select'
+import { Select } from '../components/ui/Select'
 import { IMCCcode } from '../types'
-import { BANKS } from '../data'
 import { findCashbackByBank } from '../utils/cashbackUtils'
+import { BanksContext } from '../App'
 
 const ManagerPage = () => {
+    const banks = useContext(BanksContext)
     const [mccCode, setMCCcode] = useState('')
     const [description, setDescription] = useState('')
-    const [bank, setBank] = useState(BANKS[0].id)
+    const [bank, setBank] = useState(banks[0].id)
     const [cashBack, setCashback] = useState(0)
     const [allCashBacks, setAllCashbacks] = useState([{id: 0, bankId: 0, name: '', mcc: [0]}])
 
@@ -31,7 +32,7 @@ const ManagerPage = () => {
     <div className='grid justify-center'>
         <form onSubmit={(e) => addNewMCCcode(e)} className='max-w-sm mx-auto'>
             <div className='text-xl text-center'>Добавить МСС код</div>
-            <Select options={BANKS} onChange={setBank}/>
+            <Select options={banks} onChange={setBank}/>
             <Select options={allCashBacks} onChange={setCashback}/>
             <MCCcodeInput value={mccCode} onChange={setMCCcode} placeholder='МСС код' style='mt-2'/>
             <Input value={description} onChange={setDescription} placeholder='Описание' style='mt-2'/>

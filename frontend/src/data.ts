@@ -1,27 +1,4 @@
-import { IBank, ICashBack, IMCCcode } from "./types";
-
-export const BANKS:IBank[] = [
-    {
-        id: 0,
-        name: "Альфа-Банк"
-    }, 
-    {
-        id: 1,
-        name: "ВТБ Банк"
-    }, 
-    {
-        id: 2,
-        name: "Т-Банк"
-    }, 
-    {
-        id: 3,
-        name: "Сбер"
-    },
-    {
-        id: 5,
-        name: "Райффайзен банк"
-    },
-]
+import {ICashBack, IMCCcode } from "./types";
 
 export const CASHBACK:ICashBack[] = [
     {
