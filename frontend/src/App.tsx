@@ -12,7 +12,7 @@ function App() {
 
     const fetchBanks = async () => {
         await fetch(
-          "https://mcc-code-manager-backend.vercel.app/api/v1/banks/getAll"
+          "https://mcc-code-manager-backend.vercel.app/api/v1/banks"
         ).then((response) => response.json())
          .then((data) => setBanks(data))
     }
@@ -25,7 +25,7 @@ function App() {
         <BanksContext.Provider value={banks}>
             <BrowserRouter>
                 <Header/>
-                <div className='px-8 pt-10'>
+                <div className='px-8 pt-10 pb-[80px]'>
                     <RoutesController/>
                 </div>
                 <BottomNavigation/>

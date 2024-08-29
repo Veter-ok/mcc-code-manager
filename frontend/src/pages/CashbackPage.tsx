@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { IBank, ICashBack } from '../types'
+import { ICashBack } from '../types'
 import { Input } from '../components/ui/Input'
-import { findCashbackByBank, searchCashbackByName } from '../utils/cashbackUtils'
+import {searchCashbackByName } from '../utils/cashbackUtils'
 import CashbackBlock from '../components/ui/CashbackBlock'
 import { findBankByID } from '../utils/bankUtils'
 import { BanksContext } from '../App'
@@ -10,29 +10,39 @@ import { BanksContext } from '../App'
 const CashbackPage = () => {
     const params = useParams()
     const banks = useContext(BanksContext)
-    const [bank, setBank] = useState<IBank>({id: 0, name: ''})
+    const [cashbacks, setCashback] = useState([{id: 0, bankId: 0, name: '', mcc: []}])
+    const [bank, setBank] = useState({id: 0, name: ''})
     const [currentlyCashBacks, setCurrentlyCashBacks] = useState<ICashBack[]>([{id: 0, bankId: 0, name: '', mcc: []}])
     const [value, setValue] = useState('')
     const [openedCashbackId, setOpenedCashbackId] = useState(-1)
+
+    const fetchCashbacks = async () => {
+        await fetch(
+          "https://mcc-code-manager-backend.vercel.app/api/v1/cashbacks"
+        ).then((response) => response.json())
+         .then((data) => {
+            setCashback(data)
+            setCurrentlyCashBacks(data)
+        })
+    }
 
     useEffect(() => {
         const findedBank = findBankByID(banks, Number(params.bankId))
         setBank(findedBank)
 
-        const findedCashBacks = findCashbackByBank(Number(params.bankId))
-        setCurrentlyCashBacks(findedCashBacks)
+        fetchCashbacks()
     }, [banks, params.bankId])
 
     const searchCashBack = (value: string) => {
         setValue(value)
-        const newCashBacks = searchCashbackByName(value)
+        const newCashBacks = searchCashbackByName(cashbacks, value)
         setCurrentlyCashBacks(newCashBacks)
     }
 
     return (
         <div>
             <p className='text-center text-3xl'>{bank.name}</p>
-            <div className='flex mx-auto w-1/2 justify-center mt-[40px]'>
+            <div className='flex mx-auto min-w-[300px] w-1/2 justify-center mt-[40px]'>
                 <Input 
                     placeholder='Название cashback-а / МСС-код'
                     value={value} 

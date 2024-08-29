@@ -1,19 +1,4 @@
-import {ICashBack, IMCCcode } from "./types";
-
-export const CASHBACK:ICashBack[] = [
-    {
-        id: 0,
-        bankId: 0,
-        name: '5% транспорт',
-        mcc: [0, 1, 2, 3]
-    },
-    {
-        id: 1,
-        bankId: 0,
-        name: '5% красота',
-        mcc: [11, 222]
-    }
-]
+import {IMCCcode } from "./types";
 
 export const MCC_CODES:IMCCcode[] = [
     {

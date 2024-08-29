@@ -1,24 +1,24 @@
-import { CASHBACK, MCC_CODES } from "../data";
+import { MCC_CODES } from "../data";
 import { ICashBack, IMCCcode } from "../types";
 
-export const findCashbackByBank = (bankId: number):ICashBack[] => {
-    const cashbacks = []
-    for(let i = 0; i < CASHBACK.length; i++){
-        if (CASHBACK[i].bankId === bankId){
-            cashbacks.push(CASHBACK[i])
+export const findCashbackByBank = (cashbacks:ICashBack[], bankId: number):ICashBack[] => {
+    const newCashbacks = []
+    for(let i = 0; i < cashbacks.length; i++){
+        if (cashbacks[i].bankId === bankId){
+            newCashbacks.push(cashbacks[i])
         }
     }
-    return cashbacks
+    return newCashbacks
 }
 
-export const searchCashbackByName = (value: string):ICashBack[] => {
-    const cashbacks = []
-    for(let i = 0; i < CASHBACK.length; i++){
-        if (CASHBACK[i].name.includes(value) || CASHBACK[i].mcc.indexOf(Number(value)) >= 0){
-            cashbacks.push(CASHBACK[i])
+export const searchCashbackByName = (cashbacks:ICashBack[], value: string):ICashBack[] => {
+    const newCashbacks = []
+    for(let i = 0; i < cashbacks.length; i++){
+        if (cashbacks[i].name.includes(value) || cashbacks[i].mcc.indexOf(Number(value)) >= 0){
+            newCashbacks.push(cashbacks[i])
         }
     }
-    return cashbacks
+    return newCashbacks
 } 
 
 export const findMCCcodeById = (id: number):IMCCcode => {
