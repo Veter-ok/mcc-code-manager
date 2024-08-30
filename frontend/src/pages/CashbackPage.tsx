@@ -1,37 +1,26 @@
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { ICashBack } from '../types'
 import { Input } from '../components/ui/Input'
 import {searchCashbackByName } from '../utils/cashbackUtils'
 import CashbackBlock from '../components/ui/CashbackBlock'
 import { findBankByID } from '../utils/bankUtils'
-import { BanksContext } from '../App'
+import { BanksContext, CashbacksContext } from '../App'
 
 const CashbackPage = () => {
     const params = useParams()
     const banks = useContext(BanksContext)
-    const [cashbacks, setCashback] = useState([{id: 0, bankId: 0, name: '', mcc: []}])
+    const cashbacks = useContext(CashbacksContext)
     const [bank, setBank] = useState({id: 0, name: ''})
-    const [currentlyCashBacks, setCurrentlyCashBacks] = useState<ICashBack[]>([{id: 0, bankId: 0, name: '', mcc: []}])
+    const [currentlyCashBacks, setCurrentlyCashBacks] = useState([{id: 0, bankId: 0, name: '', mcc: [0]}])
     const [value, setValue] = useState('')
     const [openedCashbackId, setOpenedCashbackId] = useState(-1)
-
-    const fetchCashbacks = async () => {
-        await fetch(
-          "https://mcc-code-manager-backend.vercel.app/api/v1/cashbacks"
-        ).then((response) => response.json())
-         .then((data) => {
-            setCashback(data)
-            setCurrentlyCashBacks(data)
-        })
-    }
 
     useEffect(() => {
         const findedBank = findBankByID(banks, Number(params.bankId))
         setBank(findedBank)
 
-        fetchCashbacks()
-    }, [banks, params.bankId])
+        setCurrentlyCashBacks(cashbacks)
+    }, [banks, cashbacks, currentlyCashBacks, params.bankId])
 
     const searchCashBack = (value: string) => {
         setValue(value)

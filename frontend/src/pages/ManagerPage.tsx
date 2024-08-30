@@ -3,10 +3,11 @@ import { Input, MCCcodeInput } from '../components/ui/Input'
 import { Select } from '../components/ui/Select'
 import { IMCCcode } from '../types'
 import { findCashbackByBank } from '../utils/cashbackUtils'
-import { BanksContext } from '../App'
+import { BanksContext, CashbacksContext } from '../App'
 
 const ManagerPage = () => {
     const banks = useContext(BanksContext)
+    const cashbacks = useContext(CashbacksContext)
     const [mccCode, setMCCcode] = useState('')
     const [description, setDescription] = useState('')
     const [bank, setBank] = useState(banks[0].id)
@@ -14,9 +15,9 @@ const ManagerPage = () => {
     const [allCashBacks, setAllCashbacks] = useState([{id: 0, bankId: 0, name: '', mcc: [0]}])
 
     useEffect(() => {
-        const newAllCashBacks = findCashbackByBank(bank)
+        const newAllCashBacks = findCashbackByBank(cashbacks, bank)
         setAllCashbacks(newAllCashBacks)
-    }, [bank])
+    }, [bank, cashbacks])
 
     const addNewMCCcode = (event: FormEvent) => {
         event.preventDefault()
